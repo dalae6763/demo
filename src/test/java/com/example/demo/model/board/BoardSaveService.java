@@ -21,9 +21,12 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 public class BoardSaveService {
 
     private final BoardSaveValidator validator;
+    private final BoardDao dao;
+
     public void save(Board board){
         validator.Check(board);
 
+        dao.insert(board);
     }
 
 

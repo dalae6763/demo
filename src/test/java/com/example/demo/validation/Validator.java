@@ -1,5 +1,7 @@
 package com.example.demo.validation;
 
+import com.example.demo.model.board.Board;
+
 public interface Validator <T>{
 
     void check(T t);
@@ -13,4 +15,5 @@ public interface Validator <T>{
 
     }
 
+    void Check(Board board);
 }

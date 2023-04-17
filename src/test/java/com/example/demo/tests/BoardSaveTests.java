@@ -2,6 +2,7 @@ package com.example.demo.tests;
 
 import com.example.demo.model.board.BoaedValidationException;
 import com.example.demo.model.board.Board;
+import com.example.demo.model.board.BoardDao;
 import com.example.demo.model.board.BoardSaveService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.validation.Errors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,11 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test.properties")
 @AutoConfigureMockMvc
-public class BoardServiceTests {
+public class BoardSaveTests {
 
 
     @Autowired
     private MockMvc mockMvc;
+    private BoardDao dao;
+
 
     @Autowired
     private BoardSaveService service;
@@ -89,6 +91,9 @@ public class BoardServiceTests {
     @DisplayName("게시글 데이터를 db에반여이시 성공하면 true")
     public void dataInsertTest()
     {
+
+        boolean result = dao.insert(board);
+        assertTrue(result);
 
     }
 
